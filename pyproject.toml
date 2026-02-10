@@ -1,0 +1,21 @@
+[project]
+name = "lamp"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Dominik Zmitrowicz",email = "dogrizz@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.13"
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "micropython-stdlib-stubs (>=1.27.0,<2.0.0)",
+    "micropython-esp32-stubs (>=1.27.0.post1,<2.0.0)",
+]

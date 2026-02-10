@@ -1,0 +1,5 @@
+{
+  "pythonPlatform": "MicroPython",
+  "typeCheckingMode": "basic",
+  "extraPaths": ["src/lamp"],
+}

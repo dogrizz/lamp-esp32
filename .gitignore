@@ -1,0 +1,3 @@
+.venv
+src/nvs_setup/**
+**/__pycache__/**
