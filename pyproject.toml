@@ -18,4 +18,5 @@ build-backend = "poetry.core.masonry.api"
 dev = [
     "micropython-stdlib-stubs (>=1.27.0,<2.0.0)",
     "micropython-esp32-stubs (>=1.27.0.post1,<2.0.0)",
+    "microdot (>=1.0,<2.0)",
 ]

@@ -6,7 +6,7 @@ from led_mgr import LedManager
 from machine import Pin
 from sun_data import SunDataFetcher
 
-LED_DIM_TIME = 30 * 60  # seconds
+LED_DIM_TIME = 10 * 60  # seconds
 UNIX_OFFSET = 946684800
 
 

@@ -2,7 +2,6 @@ import time
 
 import ntptime
 import uasyncio as asyncio
-
 from wifi import WiFiManager
 
 SECONDS_IN_DAY = 86400
@@ -12,6 +11,7 @@ class TimeSync:
     def __init__(self, wifi: WiFiManager):
         self.wifi = wifi
         self.synced = False
+        self.last_sync = None
 
     async def sync_time(self):
         while not self.wifi.connected:
@@ -21,7 +21,8 @@ class TimeSync:
             print("[time] syncing NTP...")
             ntptime.settime()  # sets RTC to UTC
             self.synced = True
-            print("[time] synced:", time.localtime())
+            self.last_sync = time.localtime()
+            print("[time] synced:", self.last_sync)
         except Exception as e:
             print("[time] sync failed:", e)
             self.synced = False
