@@ -1,7 +1,7 @@
-# what is this
-Just some code to allow lamp to run LED Lamp using sunrise/sunset data
+# What is this
+Just some code to run LED strip using sunrise/sunset data using esp32.
 
-# setup
+# Setup
 Need esp32.
 Flash it with micropython.
 
@@ -18,10 +18,7 @@ nvs = NVS("weather")
 nvs.set_blob("api_key", b"openweatherapikey")
 nvs.commit()
 ```
-Install microdot:
-```
-  mpremote connect auto mip install https://raw.githubusercontent.com/miguelgrinberg/microdot/refs/heads/main/src/microdot/microdot.py
-```
+`
 Run it once and then you can play around with the project.
 
 You will also need to install microdot. I was only able to install v1 (copy microdot.py and microdot_asyncio.py to lib dir on device) but if you have more RAM you should be able to run v2 without changing much of the code.
@@ -29,3 +26,8 @@ You will also need to install microdot. I was only able to install v1 (copy micr
 With most editors if you want to see documentation on micropython apis set
 `poetry config virtualenvs.in-project true` before running `poetry install`.
 Otherwise adjust `pyrightconfig.json` to include your venv location
+
+You can check what your esp32 is doing through
+```
+curl <esp_ip>/info
+```
