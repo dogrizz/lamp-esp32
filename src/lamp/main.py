@@ -30,6 +30,11 @@ def date_str(datetime) -> str:
     return "{:04d}-{:02d}-{:02d} {:02d}:{:02d}:{:02d}".format(y, m, d, h, mi, s)
 
 
+def color_str(color) -> str:
+    r, g, b = color
+    return f"(r:{r} g:{g} b:{b})"
+
+
 app = Microdot()
 nvs_wifi = NVS("wifi")
 wifi = WiFiManager(get_str(nvs_wifi, "ssid"), get_str(nvs_wifi, "pass"))
@@ -52,7 +57,10 @@ async def status(request):
             "localtime": date_str(time.localtime()),
             "last_sync": date_str(time_sync.last_sync),
         },
-        "color": {"current": led_manager.current, "target": led_manager.color},
+        "color": {
+            "current": color_str(led_manager.current),
+            "target": color_str(led_manager.color),
+        },
         "plan": {"on": date_str(led._turn_on), "off": date_str(led._turn_off)},
     }
 
