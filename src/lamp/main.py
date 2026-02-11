@@ -26,7 +26,7 @@ def get_str(nvs: NVS, key: str) -> str:
 
 
 def date_str(datetime) -> str:
-    y, m, d, w, h, mi, s = datetime
+    y, m, d, h, mi, s, _, _ = datetime
     return "{:04d}-{:02d}-{:02d} {:02d}:{:02d}:{:02d}".format(y, m, d, h, mi, s)
 
 
