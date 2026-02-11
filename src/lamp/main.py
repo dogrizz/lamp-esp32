@@ -25,6 +25,11 @@ def get_str(nvs: NVS, key: str) -> str:
     return buf.rstrip(b"\x00").decode()
 
 
+def date_str(datetime) -> str:
+    y, m, d, w, h, mi, s = datetime
+    return "{:04d}-{:02d}-{:02d} {:02d}:{:02d}:{:02d}".format(y, m, d, h, mi, s)
+
+
 app = Microdot()
 nvs_wifi = NVS("wifi")
 wifi = WiFiManager(get_str(nvs_wifi, "ssid"), get_str(nvs_wifi, "pass"))
@@ -43,9 +48,12 @@ async def status(request):
     return {
         "name": "Lamp",
         "status": led_manager.status,
-        "time": {"localtime": time.localtime(), "last_sync": time_sync.last_sync},
+        "time": {
+            "localtime": date_str(time.localtime()),
+            "last_sync": date_str(time_sync.last_sync),
+        },
         "color": {"current": led_manager.current, "target": led_manager.color},
-        "plan": {"on": led._turn_on, "off": led._turn_off},
+        "plan": {"on": date_str(led._turn_on), "off": date_str(led._turn_off)},
     }
 
 
